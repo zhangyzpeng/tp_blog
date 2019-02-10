@@ -1,0 +1,142 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="/favicon.ico" >
+<link rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__ADMIN__/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/lib/Validform_v5.3.2/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/lib/webuploader/0.1.5/webuploader.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__ADMIN__/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<!--/meta 作为公共模版分离出去-->
+
+<title>新增文章 - 资讯管理 - H-ui.admin v3.1</title>
+<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<article class="page-container">
+	<form class="form form-horizontal" id="form-article-add" method="post" action="{{:url('/admin/Pic/'.$pic.id)}}">
+			<input type="hidden" name="_method" value="PUT">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>幻灯片标题：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" datatype="s6-20" errormsg="填写1-20长度的字符" class="input-text" value="{{$pic.title}}" placeholder="" id="articletitle" name="title">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>幻灯片地址：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" datatype="url" errormsg="填写合法的地址" class="input-text" value="{{$pic.url}}" placeholder="" id="articletitle" name="url">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>是否展示：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="radio" placeholder="" name="is_show" value="1" {{$pic.is_show==1?'checked':''}}>是
+				<input type="radio" placeholder="" name="is_show" value="0" {{$pic.is_show==0?'checked':''}}>否
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">文章摘要：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="summary" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)">{{$pic.summary}}</textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<div class="uploader-thum-container">
+				<div id="fileList" class="uploader-list"></div>
+					<div id="filePicker">选择图片
+						
+					</div>
+					<span class="red">图片大小920*300</span>
+						<div id="img" class="formControls col-xs-offset-4 col-xs-8 col-sm-9" style="width:310px;height:100px; margin-top:20px; border:1px dashed #333">
+								<img src="/{{$pic.img_url}}">
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				
+				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+ <!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__ADMIN__/lib/webuploader/0.1.5/webuploader.min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/lib/Validform_v5.3.2/js/Validform_v5.3.2_min.js"></script> 
+<script type="text/javascript" src="__ADMIN__/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+	// 初始化Web Uploader
+var uploader = WebUploader.create({
+
+    // 选完文件后，是否自动上传。
+    auto: true,
+
+    // swf文件路径
+    swf:'__ADMIN__/lib/webuploader/0.1.5/Uploader.swf',
+
+    // 文件接收服务端。
+    server: "{{:url('/admin/upPicImg')}}",
+
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker',
+
+    // 只允许选择图片文件。
+    accept: {
+        title: 'Images',
+        extensions: 'gif,jpg,jpeg,bmp,png',
+        mimeTypes: 'image/*'
+    }
+});
+
+// 文件上传成功，给item添加成功class, 用样式标记上传成功。
+uploader.on( 'uploadSuccess', function( file,data ) {
+	if(data.status=='success'){
+		$("#img").html('<img style="width:310px;height:100px;" src=/'+data.info+'><input type="hidden" name="img_url" value="'+data.info+'">');
+	}else{
+		$("#img").html('请选择正确格式的图片');
+	}
+});
+
+//文章内容
+
+//var ue =UE.getEditor('editor',{toolbars:[['undo', 'redo','bold', 'italic', 'underline','forecolor', 'backcolor']]});
+
+$(".form").Validform({
+	tiptype:4,
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿
+
+<!-- 右侧开始--> 
+   <div id="sidebar" class="widget-area"> 
+<!-- 右侧搜索框开始--> 
+    <aside id="search-2" class="widget widget_search"> 
+     <div id="searchbar"> 
+      <form method="post" id="searchform" action="{{:url('/search')}}"> 
+       <input type="text" value="" name="words" id="s" placeholder="输入搜索内容" required="" /> 
+       <button type="submit" id="searchsubmit">搜索</button> 
+      </form> 
+     </div> 
+     <div class="clear"></div> 
+    </aside> 
+<!-- 右侧搜索框结束--> 
+<!-- 右侧分类开始--> 
+    <aside id="categories-2" class="widget widget_categories"> 
+     <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>分类目录</h3> 
+     <ul> 
+      {volist name="cats" id="vo"}
+        <li> <a href="{{:url('/home/list',['cid'=>encrypt($vo.id)])}}">{{$vo.cat_name}}</a> </li> 
+      {/volist}
+     </ul> 
+     <div class="clear"></div> 
+    </aside> 
+	<!-- 右侧分类结束--> 
+
+	<!-- 近期文章开始--> 
+    <aside id="recent-posts-2" class="widget widget_recent_entries"> 
+     <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>近期文章</h3> 
+     <ul> 
+      {volist name="new_art" id="vo"}
+          <li> <a href="{{:url('/home/detail',['aid'=>encrypt($vo.id)])}}">{{$vo.title}}</a> </li> 
+      {/volist}
+     </ul> 
+     <div class="clear"></div> 
+    </aside> 
+<!-- 近期文章结束--> 
+    <aside id="img_cat-2" class="widget img_cat"> 
+     <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>最多评论</h3> 
+     <div class="img_cat"> 
+      <ul> 
+       <div class="img-box"> 
+        <div class="img-x2"> 
+         <figure class="insets"> 
+          <a href="www.lampol-blog.com/27.html"><img src="__HOME__/images/demo.jpg" alt="MYDREAM主题 最新更新版本V1.8 2017-8-23更新" /></a> 
+          <div class="img-title">
+           <a href="www.lampol-blog.com/27.html" rel="bookmark">MYDREAM主题 最新更新版本V1.8 2017-8-23更新</a> 
+          </div> 
+         </figure> 
+        </div> 
+       </div> 
+       <div class="img-box"> 
+        <div class="img-x2"> 
+         <figure class="insets"> 
+          <a href="www.lampol-blog.com/100.html"><img src="__HOME__/images/demo.jpg" alt="Wordpress插件之CKPlayer" /></a> 
+          <div class="img-title"> 
+           <a href="www.lampol-blog.com/100.html" rel="bookmark">WordPress插件之CKPlayer</a> 
+          </div> 
+         </figure> 
+        </div> 
+       </div> 
+       <div class="img-box"> 
+        <div class="img-x2"> 
+         <figure class="insets"> 
+          <a href="www.lampol-blog.com/167.html"><img src="__HOME__/images/demo.jpg" alt="运用autoit写的系统补丁检测" /></a> 
+          <div class="img-title"> 
+           <a href="www.lampol-blog.com/167.html" rel="bookmark">运用autoit写的系统补丁检测</a> 
+          </div> 
+         </figure> 
+        </div> 
+       </div> 
+       <div class="img-box"> 
+        <div class="img-x2"> 
+         <figure class="insets"> 
+          <a href="www.lampol-blog.com/185.html"><img src="__HOME__/images/demo.jpg" alt="MyDream主题使用教程" /></a> 
+          <div class="img-title"> 
+           <a href="www.lampol-blog.com/185.html" rel="bookmark">MyDream主题使用教程</a> 
+          </div> 
+         </figure> 
+        </div> 
+       </div> 
+       <div class="clear"></div> 
+      </ul> 
+     </div> 
+     <div class="clear"></div> 
+    </aside> 
+
+		<!-- 人们标签开始--> 
+    <div class="sidebar-roll"> 
+     <aside id="tag_cloud-2" class="widget tag_cloud"> 
+      <h3 class="widget-title"><i class="iconfont icon-viewgrid"></i>热门标签</h3> 
+      <div class="tagcloud"> 
+
+      {volist name="HotTag" id="vo"}
+       <a href="javascript:;" style="color:#70807a;font-size: 15px;; style="color:#84dde8;">{{$vo}}</a> 
+      {/volist}
+
+       <div class="clear"></div> 
+      </div> 
+      <div class="clear"></div> 
+     </aside> 
+    </div> 
+	<!-- 热门标签结束--> 
+   </div> 
+   <div class="clear"></div> 
+  </div> 

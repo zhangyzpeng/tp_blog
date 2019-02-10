@@ -1,0 +1,116 @@
+﻿
+<style>
+	.pagination{
+		width:300px;
+	}
+	.pagination{
+		float:left;
+	}
+	.disabled{
+		background:#fff none repeat scroll 0 0;
+		border:1px solid #ddd;
+		border-radius:2px;
+		box-shadow:0 1px 1px rgba(0,0,0,0.04);
+		float:left;
+		line-height:100%;
+		margin:0 0 10px 5px;
+		padding:8px 11px;
+	}
+	.active
+	{
+		background:#304040;
+		color:#rrr;
+		border:1px solid #ddd;
+		box-shadow:0 1px rgba(0,0,0,0.04);
+		float:left;
+		line-height:100%;
+		margin:0 0 10 5px;
+		padding:8px 11px;
+	}
+</style>
+  <div class="breadcrumb"> 
+   <div class="bull"> 
+    <i class="iconfont icon-bullhorn" aria-hidden="true"></i> 
+   </div> 
+   <div id="scrolldiv"> 
+    <div class="scrolltext"> 
+     <ul> 
+      <li>这应该是一个公告的位置吧嗯。。。。！</li> 
+      <li>欢迎向本主题提供修改意见！</li> 
+     </ul> 
+    </div> 
+   </div> 
+  </div> 
+  <div id="content"> 
+   <!-- 幻灯片调用begin --> 
+   <div id="slider" class="swiper-container"> 
+    <div class="swiper-wrapper"> 
+     <!-- 自定义栏目幻灯片show --> 
+     <!-- 随机幻灯片--> 
+     {volist name="pics" id="vo"}
+     <div class="swiper-slide"> 
+      <div class="swiper-slide-image"> 
+       <a href="www.lampol-blog.com/104.html"><img src="/{{$vo.img_url}}" alt="{{$vo.title}}" /></a> 
+      </div> 
+
+      <div class="swiper-slide-text"> 
+       <h2><a href="www.lampol-blog.com/104.html" rel="bookmark">{{$vo.title}}</a></h2> 
+       <p> <a href="www.lampol-blog.com/104.html" target="_blank" rel="bookmark">{{$vo.summary}}</a> </p> 
+      </div> 
+     </div> 
+     {/volist}
+     <!-- 自定义幻灯片 --> 
+    </div> 
+    <div class="swiper-pagination"></div> 
+    <div class="swiper-button-next"></div> 
+    <div class="swiper-button-prev"></div> 
+   </div> 
+   <!-- 幻灯片调用end --> 
+
+
+
+   <div id="primary" class="content-area"> 
+
+
+      <!-- 文章内容开始 --> 
+    {volist name="article" id="vo"}
+    <article id="post-167" class="post-167 post type-post status-publish format-standard hentry category-au3 tag-ie11 tag-wmic tag-101"> 
+     <div class="art-desc"> 
+      <h3 class="art-t"> <a href="{{:url('/home/detail',['aid'=>encrypt($vo.id)])}}" rel="bookmark" title="运用autoit写的系统补丁检测">{{$vo.title}}</a> </h3> 
+      <div class="more"> 
+       <a href="{{:url('/home/detail',['aid'=>encrypt($vo.id)])}}" rel="bookmark"><i class="iconfont icon-import"></i></a> 
+      </div> 
+      <div class="clear"></div> 
+      <div style="min-height:150px;margin:20px"> 
+       <div class="art-img"> 
+        <a href="{{:url('/home/detail',['aid'=>authcode($vo.id,'ENCODE')])}}"><img src="/{{$vo.img_url}}" alt="运用autoit写的系统补丁检测" /></a> 
+       </div> 
+       <span class="art-main">{{$vo.summary}}</span> 
+      </div> 
+      <div class="clear"></div> 
+     </div> 
+     <div class="art_ft"> 
+      <div class="art-pub"> 
+       <div class="views"> 
+        <i class="iconfont icon-chartbar"></i> 0
+       </div> 
+       <div class="cmnt"> 
+        <a href="www.lampol-blog.com/167.html#comments"><i class="iconfont icon-messageprocessing"></i> 5</a> 
+       </div> 
+      </div> 
+      <div class="art-info"> 
+       <span class="archive"><i class="iconfont icon-archive" aria-hidden="true"></i>{{$vo.author}}</span> 
+       <span class="data"><i class="iconfont icon-calendartext"></i>{{$vo.created_at|date='Y-m-d H:i:s',###}}</span> 
+       <span class="tag"><i class="iconfont icon-tagmultiple"></i> <a href="www.lampol-blog.com/tag/ie11" rel="tag">{{$vo.tag}}</a>
+      </div> 
+     </div> 
+     <div class="clear"></div> 
+    </article> 
+    {/volist}
+    <!-- 文章内容结束 --> 
+ <!-- 分页开始 --> 
+    <nav class="navigation pagination" role="navigation"> 
+    	{{$article->render()}}
+    </nav> 
+ <!-- 分页结束--> 
+   </div> 
